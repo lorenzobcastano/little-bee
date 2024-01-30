@@ -1,7 +1,21 @@
-<%= simple_form_for(@sell, url: sells_path) do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= label_tag 'products', 'Products', class: 'fs-4 mt-1 mb-1' %>
-  <%= select_tag 'sell[product_ids][]', options_for_select(Product.all.map { |product| [product.name, product.id] }), class: 'fs-4 mt-2 mb-3 p-1 slim-select', data: { controller: 'selectable' }, multiple: true %>
-  <%= f.submit 'Create Sell', class: 'btn btn-success' %>
-  <%= link_to "Cancel", sells_path(@sell), class: "btn btn-danger" %>
-<% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4">Make a new sell</h1>
+
+      <%= simple_form_for(@sell, url: sells_path) do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+
+        <div class="form-group">
+          <%= label_tag 'products', 'Products', class: 'fs-4 mt-1 mb-1' %>
+          <%= select_tag 'sell[product_ids][]', options_for_select(Product.all.map { |product| [product.name, product.id] }), class: 'fs-4 mt-2 mb-3 p-1 slim-select', data: { controller: 'selectable' }, multiple: true %>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit 'Create Sell', class: 'btn btn-success' %>
+          <%= link_to "Cancel", sells_path(@sell), class: "btn btn-danger ml-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -20,3 +20,7 @@ pin "@babel/runtime/helpers/defineProperty", to: "@babel--runtime--helpers--defi
 pin "@babel/runtime/helpers/typeof", to: "@babel--runtime--helpers--typeof.js" # @7.23.9
 pin "canvg" # @3.0.10
 pin "jspdf" # @2.5.1
+pin "async" # @1.5.2
+pin "depd" # @1.1.0
+pin "process" # @2.0.1
+pin "validator" # @4.9.0

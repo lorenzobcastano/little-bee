@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
   resources :sells, only: [:new, :create, :index, :show]
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "sells#index"
   resources :pdfgenerator
 end
