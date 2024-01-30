@@ -1,17 +1,17 @@
-<div class="container mt-5" data-controller = "hello">
+<div class="container mt-5" data-controller="hello">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h2 class="text-center" >Sell Details</h2>
-
-      <% if @sell %>
-        <div class="card mb-2" >
-          <div class="card-body" id= "print">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Sell Details</h2>
+        </div>
+        <% if @sell %>
+          <div class="card-body" id="print" data-sell-id="<%= @sell.id %>">
             <h6 class="card-title">
               <%= "Sell ID: #{@sell.id}" %><br>
-              <% total_sell_price = 0 %>
+              <% total_sell_price = @sell.products.sum(&:price) %>
               <% @sell.products.each do |product| %>
                 <%= "#{product.name.capitalize} - $#{product.price}" %><br>
-                <% total_sell_price += product.price %>
               <% end %>
               <p>Total Sell Price: <%= number_to_currency(total_sell_price, unit: '$', precision: 2) %></p>
             </h6>
@@ -25,13 +25,17 @@
               </span>
             </p>
           </div>
+        <% else %>
+          <div class="card-body">
+            <p class="card-text">Sell not found.</p>
+          </div>
+        <% end %>
+        <div class="card-footer text-center">
+          <button data-action="click->hello#generatePDF" class="btn btn-primary">Download PDF</button>
         </div>
-      <% else %>
-        <p>Sell not found.</p>
-      <% end %>
-      <button data-action="click->hello#generatePDF">Generate PDF</button>
+      </div>
       <div class='container'>
-        <%= link_to products_path, class: 'btn btn-success mb-2 text-center' do %>
+        <%= link_to products_path, class: 'btn btn-success mt-2 text-center' do %>
           <i class="fas fa-cart-arrow-down"></i> Back to List
         <% end %>
       </div>
