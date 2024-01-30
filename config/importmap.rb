@@ -10,3 +10,6 @@ pin "bootstrap" # @5.3.2
 pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
+pin "fflate" # @0.8.1
+pin "dompurify" # @3.0.8
+pin "html2canvas" # @1.4.1
