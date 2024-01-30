@@ -42,17 +42,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_031027) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "product_sells", id: false, force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "sell_id", null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products_sells", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "sell_id", null: false
+    t.index ["product_id", "sell_id"], name: "index_products_sells_on_product_id_and_sell_id"
+    t.index ["sell_id", "product_id"], name: "index_products_sells_on_sell_id_and_product_id"
   end
 
   create_table "sells", force: :cascade do |t|
