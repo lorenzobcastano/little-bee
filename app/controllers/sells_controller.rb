@@ -55,5 +55,4 @@ end
 
     most_sold_product&.first
   end
-
 end

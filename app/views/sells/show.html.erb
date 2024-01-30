@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" data-controller = "hello" id= "print">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h2 class="text-center">Sell Details</h2>
@@ -29,7 +29,7 @@
       <% else %>
         <p>Sell not found.</p>
       <% end %>
-
+      <button data-action="click->hello#generatePDF">Generate PDF</button>
       <div class='container'>
         <%= link_to products_path, class: 'btn btn-success mb-2 text-center' do %>
           <i class="fas fa-cart-arrow-down"></i> Back to List

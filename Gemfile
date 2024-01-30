@@ -72,4 +72,4 @@ gem 'simple_form'
 gem 'bootstrap', '~> 5.3.2'
 gem "sassc-rails"
 gem 'jquery-rails'
-gem 'grover'
+gem 'prawn'
