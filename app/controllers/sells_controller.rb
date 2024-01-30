@@ -1,6 +1,9 @@
 class SellsController < ApplicationController
   def index
-    @sells = Sell.includes(:products).all
+    @sells = Sell.all
+    @total_revenue = calculate_total_revenue(@sells)
+    @sell_count = @sells.count
+    @most_sold_product = find_most_sold_product(@sells)
   end
 
   def new
@@ -10,24 +13,18 @@ class SellsController < ApplicationController
 
   def show
     @sell = Sell.find(params[:id])
-    # Add any additional logic you need for displaying a single sell
   end
 
-  def create
-    @sell = Sell.new(sell_params)
+def create
+  @sell = Sell.new(sell_params)
+  @sell.total = calculate_total(@sell.products)
 
-    # Set the creation time
-    @sell.created_at = Time.now
-
-    # Assuming you have a method to calculate the total based on the product
-    @sell.total = calculate_total(@sell.products)
-
-    if @sell.save
-      redirect_to sells_path
-    else
-      render 'new'
-    end
+  if @sell.save
+    redirect_to sell_path(@sell)
+  else
+    render 'new'
   end
+end
 
   private
 
@@ -40,4 +37,23 @@ class SellsController < ApplicationController
     # For example, you can sum the prices of selected products
     Product.where(id: product_ids).sum(&:price)
   end
+
+  def calculate_total_revenue(sells)
+    sells.sum { |sell| sell.products.sum(&:price) }
+  end
+
+  def find_most_sold_product(sells)
+    product_counts = Hash.new(0)
+
+    sells.each do |sell|
+      sell.products.each do |product|
+        product_counts[product] += 1
+      end
+    end
+
+    most_sold_product = product_counts.max_by { |_product, count| count }
+
+    most_sold_product&.first
+  end
+
 end
