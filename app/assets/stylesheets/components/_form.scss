@@ -1,0 +1,14 @@
+.center-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.custom-file-input::-webkit-file-upload-button {
+  background-color: blue;
+  border: 1px solid;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}

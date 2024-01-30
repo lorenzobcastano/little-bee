@@ -1,4 +1,5 @@
-<h1 class='text-center'>Total Sells Statistics</h1>
+<h2 class='text-center mt-5 mb-4 display-4'>Total Sells Statistics</h>
+
 
 <div class="container">
   <div class="row justify-content-center">
@@ -28,19 +29,26 @@
   </div>
 </div>
 
-<p class='fs-4 text-center'>Number of Sells: <%= @sell_count %></p>
 
 <% if @most_sold_product %>
-  <div class="container mt-3">
-    <h4 class="text-center">Most Sold Product</h4>
-    <div class="card">
-      <div class="card-body text-center">
-        <%= @most_sold_product.name %>
+    <h4 class="text-center mb-3">Most Sold Product</h4>
+  <div class="container mt-3 d-flex justify-content-center">
+    <div class="card text-center" style="max-width: 18rem;">
+      <% if @most_sold_product.photo.attached? %>
+        <%= image_tag @most_sold_product.photo, class: "card-img-top", alt: "Product Image", style: "max-height: 200px; object-fit: contain;" %>
+      <% else %>
+        <p>No Image Available</p>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @most_sold_product.name %></h5>
+        <p class="card-text"><%= @most_sold_product.description %></p>
+        <p class="card-text">Price: <%= number_to_currency(@most_sold_product.price, unit: '$', precision: 2) %></p>
       </div>
     </div>
   </div>
 <% end %>
 
+<p class='fs-5 text-center mb-4'>Number of Sells: <%= @sell_count %></p>
 <div class='container d-flex justify-content-between flex-wrap gap-2' style='margin-right: auto; margin-left: auto;'>
   <% @sells.each do |sell| %>
     <div class="card col-3">
@@ -51,6 +59,9 @@
             <%= product.name %>
           </div>
         <% end %>
+        <p class="card-text">Total Price: <%= number_to_currency(sell.total_price, unit: '$', precision: 2) %></p>
+        <p class="card-text">Date: <%= sell.created_at.strftime('%Y-%m-%d') %></p>
+        <p class="card-text">Hour: <%= sell.created_at.strftime('%H:%M:%S') %></p>
       </div>
     </div>
   <% end %>

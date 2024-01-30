@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light ">
+<div class="navbar navbar-expand-sm navbar-light navbar-lorenzo ">
   <div class="container-fluid">
     <%= link_to sells_path, class: "navbar-brand" do %>
     <%= image_tag "bee.png" %>
@@ -20,14 +20,8 @@
           <li class="nav-item">
             <%= link_to "Register a sell", new_sell_path, class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item ">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">

@@ -68,8 +68,8 @@ group :test do
   gem "selenium-webdriver"
 end
 gem 'devise', '~> 4.2'
-gem 'simple_form'
 gem 'bootstrap', '~> 5.3.2'
 gem "sassc-rails"
 gem 'jquery-rails'
 gem 'prawn'
+gem 'simple_form'

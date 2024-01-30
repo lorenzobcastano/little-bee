@@ -1,0 +1,58 @@
+.navbar-lorenzo {
+  display: flex;
+  justify-content: space-between;
+  background: #F5F5DC; /* Warm Beige */
+  color: #333; /* Dark Text Color */
+  position: sticky;
+}
+.navbar-lorenzo .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lorenzo .navbar-brand img {
+  width: 50px;
+  height: 50px;
+  margin-left: 12px;
+}
+.navbar-lorenzo .navbar-brand img {
+  width: 70px; /* Adjust the width as needed */
+  height: 70px; /* Adjust the height as needed */
+  margin-left: 12px;
+}
+@media screen and (max-width: 992px) {
+  .navbar .container-fluid,
+  .navbar-expand-lg .navbar-collapse,
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navbar {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-link {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
+
+.btn-custom,
+.btn-secondary-nav {
+  margin-top: 10px;
+}
+
+.btn-custom,
+.btn-secondary-nav,
+.card-title {
+  font-size: 15px; /* Ajusta el tamaño de fuente según tus preferencias */
+}
+
+.btn-secondary-nav,
+.card-title {
+  margin-right: 10px;
+}
+
+.nav-itm .log-out {
+  bottom: 20px;
+}
