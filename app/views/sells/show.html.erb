@@ -1,11 +1,11 @@
-<div class="container mt-5" data-controller = "hello" id= "print">
+<div class="container mt-5" data-controller = "hello">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h2 class="text-center">Sell Details</h2>
+      <h2 class="text-center" >Sell Details</h2>
 
       <% if @sell %>
-        <div class="card mb-2">
-          <div class="card-body">
+        <div class="card mb-2" >
+          <div class="card-body" id= "print">
             <h6 class="card-title">
               <%= "Sell ID: #{@sell.id}" %><br>
               <% total_sell_price = 0 %>
