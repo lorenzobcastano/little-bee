@@ -61,7 +61,7 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
-
+gem "letter_opener", group: :development
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
@@ -69,3 +69,7 @@ group :test do
 end
 gem 'devise', '~> 4.2'
 gem 'simple_form'
+gem 'bootstrap', '~> 5.3.2'
+gem "sassc-rails"
+gem 'jquery-rails'
+gem 'grover'

@@ -1,36 +1,57 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h2 class="text-center">Sells</h2>
+<h1 class='text-center'>Total Sells Statistics</h1>
 
-<% @sells.reverse_each.with_index(1) do |sell, index| %>
-  <div class="card mb-2">
-    <div class="card-body">
-      <h6 class="card-title">
-        <%= "#{index}. Sell ID: #{sell.id}" %><br>
-        <%= "#{sell.products.size} Products:" %><br>
-        <% sell.products.each do |product| %>
-          <%= "#{product.name.capitalize} - $#{product.price}" %><br>
-        <% end %>
-      </h6>
-      <p class="card-text">
-        <span class="float-left">
-          <% if sell.created_at.present? %>
-            Comprado el: <%= sell.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-          <% else %>
-            Comprado el: N/A
-          <% end %>
-        </span>
-      </p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-6">
+      <div class="card l-bg-orange-dark">
+        <div class="card-statistic-3 p-4">
+          <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+          <div class="mb-4">
+            <h5 class="card-title mb-0 fw-bolder">Total Revenue</h5>
+          </div>
+          <div class="row align-items-center mb-2 d-flex">
+            <div class="col-8">
+              <h2 class="d-flex align-items-center mb-0">
+                <p class='fw-bolder'><%= number_to_currency(@total_revenue, unit: '$', precision: 2) %></p>
+              </h2>
+            </div>
+            <div class="col-4 text-right">
+              <!-- Additional content if needed -->
+            </div>
+          </div>
+          <div class="progress mt-1 " data-height="8" style="height: 8px;">
+            <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class='fs-4 text-center'>Number of Sells: <%= @sell_count %></p>
+
+<% if @most_sold_product %>
+  <div class="container mt-3">
+    <h4 class="text-center">Most Sold Product</h4>
+    <div class="card">
+      <div class="card-body text-center">
+        <%= @most_sold_product.name %>
+      </div>
     </div>
   </div>
 <% end %>
 
-      <div class='container'>
-        <%= link_to products_path, class: 'btn btn-success mb-2 text-center' do %>
-          <i class="fas fa-cart-arrow-down"></i> Back to List
+<div class='container d-flex justify-content-between flex-wrap gap-2' style='margin-right: auto; margin-left: auto;'>
+  <% @sells.each do |sell| %>
+    <div class="card col-3">
+      <p class='text-center fs-5'>Sell #<%= sell.id %></p>
+      <div class="card-body">
+        <% sell.products.each do |product| %>
+          <div>
+            <%= product.name %>
+          </div>
         <% end %>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

@@ -1,13 +1,7 @@
-<%= simple_form_for(@sell) do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-
-
-
-<%= label_tag 'products', 'Products', class: 'fs-4 mt-1 mb-1' %>
-<%= select_tag 'sell[product_ids][]', options_for_select(Product.all.map { |product| [product.name, product.id] }), class: 'fs-4 mt-2 mb-3 p-1 slim-select', data: { controller: 'selectable' }, multiple: true %>
-
-
-
-    <%= f.submit 'Create Sell', class: 'btn btn-success' %>
-    <%= link_to "Cancel", sells_path, class: "btn btn-danger" %>
+<%= simple_form_for(@sell, url: sells_path) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= label_tag 'products', 'Products', class: 'fs-4 mt-1 mb-1' %>
+  <%= select_tag 'sell[product_ids][]', options_for_select(Product.all.map { |product| [product.name, product.id] }), class: 'fs-4 mt-2 mb-3 p-1 slim-select', data: { controller: 'selectable' }, multiple: true %>
+  <%= f.submit 'Create Sell', class: 'btn btn-success' %>
+  <%= link_to "Cancel", sells_path(@sell), class: "btn btn-danger" %>
 <% end %>
