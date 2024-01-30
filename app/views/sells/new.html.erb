@@ -4,7 +4,7 @@
 
 
 <%= label_tag 'products', 'Products', class: 'fs-4 mt-1 mb-1' %>
-<%= select_tag 'sell[product_ids][]', options_for_select(Product.all.map { |product| [product.name, product.id] }), class: 'fs-4 mt-2 mb-3 p-1 slim-select', data: { controller: 'dropdown' }, multiple: true %>
+<%= select_tag 'sell[product_ids][]', options_for_select(Product.all.map { |product| [product.name, product.id] }), class: 'fs-4 mt-2 mb-3 p-1 slim-select', data: { controller: 'selectable' }, multiple: true %>
 
 
 
